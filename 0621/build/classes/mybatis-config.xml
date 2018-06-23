@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias alias="cinema" type="com.project.pojo.Cinema"></typeAlias>
+		<typeAlias alias="detail" type="com.project.pojo.Detail"></typeAlias>
+		<typeAlias alias="hall" type="com.project.pojo.Hall"></typeAlias>
+		<typeAlias alias="publish" type="com.project.pojo.Publish"></typeAlias>
+	</typeAliases>
+
+
+ <environments default="development">
+ <!--id属性必须和上面的default一样  -->
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <!--dataSource 元素使用标准的 JDBC 数据源接口来配置 JDBC 连接对象源  -->
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://193.112.94.186:3306/Order?characterEncoding=utf8"/>
+        <property name="username" value="jiang"/>
+        <property name="password" value="junfeng"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  
+    <mappers>
+    
+    	<mapper resource="com/project/mapper/Mapper.xml"/>
+    	
+    </mappers>
+</configuration>
