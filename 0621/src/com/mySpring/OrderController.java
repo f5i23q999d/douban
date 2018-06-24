@@ -1,26 +1,16 @@
 package com.mySpring;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.project.mapper.Mapper;
 import com.project.pojo.Detail;
 import com.project.pojo.Hall;
@@ -34,8 +24,7 @@ public class OrderController {
 	@ResponseBody
 	public String getOrder(@RequestParam("openid") String openid)
 	{	
-		
-	  
+	
 		System.out.println(openid);
 		SqlSession sql=null;
 		List<Detail> D;
@@ -56,7 +45,6 @@ public class OrderController {
 		
 		for(int i=0;i<D.size();i++)
 			{
-				
 				P=map.findPublishById(Integer.valueOf(D.get(i).getPublishId()));
 				jsonobj.put("id", D.get(i).getId());
 				jsonobj.put("movie", P.getMovie());
@@ -162,6 +150,47 @@ public class OrderController {
 			if(sql!=null)
 				sql.close();
 			
+		}
+
+	
+	}
+	
+	@RequestMapping(value="/insertUsedOrder",method=RequestMethod.POST,produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public void insertUsedOrder(@RequestParam("id") String id)
+	{
+		SqlSession sql=null;
+		
+		try{
+		sql=SqlSessionFactoryUtils.openSqlSession();
+		Mapper map = sql.getMapper(Mapper.class);
+		
+		map.insertUsedOrder(id);
+		}
+		finally{
+			if(sql!=null)
+				sql.close();
+		}
+
+	
+	}
+	
+	@RequestMapping(value="/delUsedOrder",method=RequestMethod.POST,produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public void delUsedOrder(@RequestParam("id") String id)
+	{
+		SqlSession sql=null;
+		
+		try{
+		sql=SqlSessionFactoryUtils.openSqlSession();
+		Mapper map = sql.getMapper(Mapper.class);
+		
+		map.delUsedOrder(id);
+		map.delTicket(id);
+		}
+		finally{
+			if(sql!=null)
+				sql.close();
 		}
 
 	

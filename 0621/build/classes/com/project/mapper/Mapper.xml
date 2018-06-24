@@ -36,4 +36,20 @@
 	<select id="IsUsed" parameterType="string" resultType="int">
 		select count(*) from used where id=#{id}
 	</select>
+	
+	<insert id="insertUsedOrder" parameterType="string">
+		insert into used values(#{id})
+	</insert>
+	
+	<delete id="delUsedOrder" parameterType="string">
+		delete from used where id=#{id}
+	</delete>
+	
+	<delete id="delTicket" parameterType="string">
+		delete from detail where id=#{id}
+	</delete>
+	
+	
+	
+	
 </mapper>
