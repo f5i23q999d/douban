@@ -7,6 +7,8 @@
 		<typeAlias alias="detail" type="com.project.pojo.Detail"></typeAlias>
 		<typeAlias alias="hall" type="com.project.pojo.Hall"></typeAlias>
 		<typeAlias alias="publish" type="com.project.pojo.Publish"></typeAlias>
+		<typeAlias alias="sellerorder" type="com.project.pojo.SellerOrder"></typeAlias>
+		
 	</typeAliases>
 
 

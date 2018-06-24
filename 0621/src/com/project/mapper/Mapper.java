@@ -6,6 +6,7 @@ import com.project.pojo.Cinema;
 import com.project.pojo.Detail;
 import com.project.pojo.Hall;
 import com.project.pojo.Publish;
+import com.project.pojo.SellerOrder;
 
 public interface Mapper {
 	public List<Cinema> findCinema(String name,String time);
@@ -17,4 +18,5 @@ public interface Mapper {
 	public List<Detail> getOrder(String id);//用openid找全部订单
 	public Detail getOrderDetail(String id);//用订单号查订单详情
 	public int IsUsed(String id);//在used表里面找这影票是否使用过
+	public List<SellerOrder> getSellerOrder(String seller);//商家通过自己商家名找其店下的订单
 }

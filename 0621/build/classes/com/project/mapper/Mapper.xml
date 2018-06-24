@@ -36,4 +36,13 @@
 	<select id="IsUsed" parameterType="string" resultType="int">
 		select count(*) from used where id=#{id}
 	</select>
+	
+	
+	<select id="getSellerOrder" parameterType="string" resultType="sellerorder">
+		select publish.time as publishTime,publish.date as publishDate,movie,type,hall,price,detail.id as orderId,accountId as buyer from publish,detail where publish.id=detail.publishId and publish.cinema=#{seller} 
+	</select>
+	
+	
+	
+	
 </mapper>

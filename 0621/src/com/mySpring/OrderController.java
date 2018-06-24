@@ -29,7 +29,7 @@ import com.project.utils.SqlSessionFactoryUtils;
 
 @Controller
 public class OrderController {
-	@RequestMapping(value="/getOrder",method=RequestMethod.POST,produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="/getOrder",produces = "application/json;charset=UTF-8")
 	
 	@ResponseBody
 	public String getOrder(@RequestParam("openid") String openid)
@@ -61,6 +61,7 @@ public class OrderController {
 				jsonobj.put("id", D.get(i).getId());
 				jsonobj.put("movie", P.getMovie());
 				jsonobj.put("price", P.getPrice());
+				jsonobj.put("publishId", D.get(i).getPublishId());
 				jsonobj.put("seat", D.get(i).getSeat());
 				if(map.IsUsed(String.valueOf(D.get(i).getId()))==0)//如果该电影票还没被使用
 					noused.add(jsonobj);
