@@ -19,4 +19,7 @@ public interface Mapper {
 	public Detail getOrderDetail(String id);//用订单号查订单详情
 	public int IsUsed(String id);//在used表里面找这影票是否使用过
 	public List<SellerOrder> getSellerOrder(String seller);//商家通过自己商家名找其店下的订单
+	public int insertUsedOrder(String id);//将用过的电影票插入到used表中
+	public int delUsedOrder(String id);//将用过的电影票插入到used表中
+	public int delTicket(String id);//将用过的电影票插入到used表中
 }

@@ -167,6 +167,49 @@ public class OrderController {
 
 	
 	}
+	
+	@RequestMapping(value="/insertUsedOrder",method=RequestMethod.POST,produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public void insertUsedOrder(@RequestParam("id") String id)
+	{
+		SqlSession sql=null;
+		
+		try{
+		sql=SqlSessionFactoryUtils.openSqlSession();
+		Mapper map = sql.getMapper(Mapper.class);
+		
+		map.insertUsedOrder(id);
+		}
+		finally{
+			if(sql!=null)
+				sql.close();
+		}
+
+	
+	}
+	
+	@RequestMapping(value="/delUsedOrder",method=RequestMethod.POST,produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public void delUsedOrder(@RequestParam("id") String id)
+	{
+		SqlSession sql=null;
+		
+		try{
+		sql=SqlSessionFactoryUtils.openSqlSession();
+		Mapper map = sql.getMapper(Mapper.class);
+		
+		map.delUsedOrder(id);
+		map.delTicket(id);
+		}
+		finally{
+			if(sql!=null)
+				sql.close();
+		}
+
+	
+	}
+	
+	
 	/*
 	@RequestMapping(value="/IsUsed",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
 	@ResponseBody
